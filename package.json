@@ -1,0 +1,25 @@
+{
+  "name": "ine-price-tracker",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @tracker/web",
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck -w @tracker/web",
+    "test": "npm run typecheck -w @tracker/web",
+    "build": "npm run build -w @tracker/web",
+    "scrape:headed": "powershell -Command \"Set-Location apps/api_django; .\\venv\\Scripts\\python manage.py scrape_headed\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.35.0",
+    "globals": "^16.3.0",
+    "typescript-eslint": "^8.44.0"
+  }
+}
+

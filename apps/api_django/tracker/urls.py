@@ -1,0 +1,41 @@
+from django.urls import path
+from .views import (
+    HealthView,
+    ProductListView,
+    ProductDetailView,
+    TrackedProductListView,
+    TrackedProductDetailView,
+    TrackedProductHistoryView,
+    TrackedProductScrapesView,
+    TrackedProductManualScrapeView,
+    AllScrapeLogsView,
+    AlertListView,
+    AlertUnreadCountView,
+    AlertMarkReadView,
+    AlertMarkAllReadView,
+    ProductChangeListView,
+    TrackedProductChangesView,
+    DashboardView,
+    ScrapeDueView,
+)
+
+urlpatterns = [
+    path("health", HealthView.as_view(), name="health"),
+    path("products/", ProductListView.as_view(), name="product-list"),
+    path("products/<uuid:pk>/", ProductDetailView.as_view(), name="product-detail"),
+    path("tracked-products/", TrackedProductListView.as_view(), name="tracked-product-list"),
+    path("tracked-products/<uuid:pk>/", TrackedProductDetailView.as_view(), name="tracked-product-detail"),
+    path("tracked-products/<uuid:pk>/history/", TrackedProductHistoryView.as_view(), name="tracked-product-history"),
+    path("tracked-products/<uuid:pk>/scrapes/", TrackedProductScrapesView.as_view(), name="tracked-product-scrapes"),
+    path("tracked-products/<uuid:pk>/scrape/", TrackedProductManualScrapeView.as_view(), name="tracked-product-scrape"),
+    path("tracked-products/<uuid:pk>/changes/", TrackedProductChangesView.as_view(), name="tracked-product-changes"),
+    path("scrapes/", AllScrapeLogsView.as_view(), name="all-scrape-logs"),
+    path("alerts/", AlertListView.as_view(), name="alert-list"),
+    path("alerts/unread-count/", AlertUnreadCountView.as_view(), name="alert-unread-count"),
+    path("alerts/<uuid:pk>/read/", AlertMarkReadView.as_view(), name="alert-mark-read"),
+    path("alerts/read-all/", AlertMarkAllReadView.as_view(), name="alert-mark-all-read"),
+    path("changes/", ProductChangeListView.as_view(), name="product-change-list"),
+    path("dashboard/", DashboardView.as_view(), name="dashboard"),
+    path("jobs/scrape-due", ScrapeDueView.as_view(), name="scrape-due"),
+]
+
